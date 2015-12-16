@@ -66,6 +66,8 @@ public class Configuration {
     private String projectShortname;
 
     private String uriBase;
+
+    private int startPos = 1;
     
     private ProgressListener progressListener;
 
@@ -112,6 +114,12 @@ public class Configuration {
         projectName = props.getProperty("PROJECT_NAME");
         projectShortname = props.getProperty("PROJECT_SHORTNAME");
         uriBase = props.getProperty("URI_BASE");
+        String startPosString = props.getProperty("START_POSITION");
+        try {
+            startPos = Integer.parseInt(startPosString);            
+        } catch (NumberFormatException e) {
+            log.warn("Could not parse property as integer: " + startPosString , e);
+        }
         
     }
 
@@ -171,7 +179,12 @@ public class Configuration {
         return uriBase;
     }
 
-	public ProgressListener getProgressListener() {
+	public int getStartPos()
+    {
+        return startPos;
+    }
+
+    public ProgressListener getProgressListener() {
 		return progressListener;
 	}
 
