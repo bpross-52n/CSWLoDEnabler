@@ -98,7 +98,7 @@ public class CSWLoDEnabler {
 
     protected boolean saveToFile = false;
 
-    Configuration config = null;
+    protected Configuration config = null;
 
     private CatalogInteractor csw;
     
