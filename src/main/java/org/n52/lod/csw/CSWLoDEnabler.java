@@ -129,7 +129,7 @@ public class CSWLoDEnabler {
     public static void main(String[] args) {
         try {
             CSWLoDEnabler enabler = new CSWLoDEnabler(new Configuration(Configuration.DEFAULT_CONFIG_FILE));
-            enabler.runOverAll();
+            enabler.runStartingFrom(4900);
         } catch (RuntimeException | IOException e) {
             log.error("Error running CSW to LOD", e);
         }
@@ -156,12 +156,12 @@ public class CSWLoDEnabler {
             return;
         }
 
-        final Stopwatch overallTimer = new Stopwatch();
+        final Stopwatch overallTimer = Stopwatch.createUnstarted();
         overallTimer.start();
 
-        final Stopwatch retrievingTimer = new Stopwatch();
-        final Stopwatch mappingTimer = new Stopwatch();
-        final Stopwatch otherTimer = new Stopwatch();
+        final Stopwatch retrievingTimer = Stopwatch.createUnstarted();
+        final Stopwatch mappingTimer = Stopwatch.createUnstarted();
+        final Stopwatch otherTimer = Stopwatch.createUnstarted();
 
         otherTimer.start();
         XmlToRdfMapper mapper = new GluesMapper(config);
@@ -244,12 +244,12 @@ public class CSWLoDEnabler {
             return;
         }
 
-        final Stopwatch overallTimer = new Stopwatch();
+        final Stopwatch overallTimer = Stopwatch.createUnstarted();
         overallTimer.start();
 
-        final Stopwatch retrievingTimer = new Stopwatch();
-        final Stopwatch mappingTimer = new Stopwatch();
-        final Stopwatch otherTimer = new Stopwatch();
+        final Stopwatch retrievingTimer = Stopwatch.createUnstarted();
+        final Stopwatch mappingTimer = Stopwatch.createUnstarted();
+        final Stopwatch otherTimer = Stopwatch.createUnstarted();
 
         otherTimer.start();
         XmlToRdfMapper mapper = new GluesMapper(config);

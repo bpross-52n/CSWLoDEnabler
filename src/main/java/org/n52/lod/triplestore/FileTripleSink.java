@@ -81,8 +81,8 @@ public class FileTripleSink extends AbstractWorkerTripleSink { //AbstractTripleS
     @Override
     public void close() throws Exception {
         long size = model.size();
-        model.write(Files.newOutputStreamSupplier(rdf.toFile()).getOutput(), "RDF/XML");
-        model.write(Files.newOutputStreamSupplier(turtle.toFile()).getOutput(), "TURTLE");
+        model.write(Files.asByteSink(rdf.toFile()).openBufferedStream(), "RDF/XML");
+        model.write(Files.asByteSink(turtle.toFile()).openBufferedStream(), "TURTLE");
         model.close();
 
         this.saved = true;
