@@ -258,7 +258,7 @@ public class CSWtoRDFMapper implements XmlToRdfMapper {
             if(isRevision){
                 recordResource.addProperty(PROV.wasRevisionOf, parentResource);                                            
             }else{
-                recordResource.addProperty(PROV.wasDerivedFrom, parentResource);  
+                recordResource.addProperty(PROV.specializationOf, parentResource);  
             }            
         }
 

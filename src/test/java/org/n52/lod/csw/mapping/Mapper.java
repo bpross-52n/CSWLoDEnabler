@@ -102,7 +102,7 @@ public class Mapper {
         
         String personName = "Marcel-Adenaeuer";
         
-        assertTrue(model.getProperty(model.getResource(mapper.getUriBase_record() +  recordId), org.n52.lod.vocab.PROV.wasDerivedFrom).getResource().getURI().toString().contains("glues:ilr:metadata:dataset:capri"));
+        assertTrue(model.getProperty(model.getResource(mapper.getUriBase_record() +  recordId), org.n52.lod.vocab.PROV.specializationOf).getResource().getURI().toString().contains("glues:ilr:metadata:dataset:capri"));
         assertTrue(model.getProperty(model.getResource(mapper.getUriBase_record() +  recordId), org.n52.lod.vocab.PROV.wasAttributedTo).getResource().getURI().toString().contains(personName));
         
         Resource provenance = model.getProperty(model.getResource(mapper.getUriBase_record() +  recordId), com.hp.hpl.jena.vocabulary.DCTerms.provenance).getResource();

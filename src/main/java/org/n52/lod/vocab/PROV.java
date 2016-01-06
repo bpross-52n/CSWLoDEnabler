@@ -80,6 +80,8 @@ public class PROV {
     
     public static final Property generatedAtTime = m.createProperty(URI + "generatedAtTime");
     
+    public static final Property specializationOf = m.createProperty(URI + "specializationOf");
+    
     
     private PROV()
     {
