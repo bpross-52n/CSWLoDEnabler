@@ -1,5 +1,5 @@
 /**
- * ﻿Copyright (C) 2013-2014 52°North Initiative for Geospatial Open Source
+ * ﻿Copyright (C) 2013-2016 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -46,6 +46,7 @@ import com.google.common.io.Files;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.ModelMaker;
+import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
  * 
@@ -121,6 +122,17 @@ public class FileTripleSink extends AbstractWorkerTripleSink { //AbstractTripleS
         }
         builder.append("]");
         return builder.toString();
+    }
+
+    @Override
+    public void addAdditionalLinks(Map<String, Resource> datasetKeywordMap)
+    {
+        addAdditionalLinksToModel(this.model, datasetKeywordMap);        
+    }
+
+    @Override
+    public Model getModel() {
+        return this.model;
     }
 
 }

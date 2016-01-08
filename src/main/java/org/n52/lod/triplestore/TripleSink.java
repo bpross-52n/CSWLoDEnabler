@@ -1,5 +1,5 @@
 /**
- * ﻿Copyright (C) 2013-2014 52°North Initiative for Geospatial Open Source
+ * ﻿Copyright (C) 2013-2016 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -32,6 +32,9 @@ import java.util.Map;
 
 import org.n52.lod.Report;
 
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Resource;
+
 import net.opengis.cat.csw.x202.GetRecordByIdResponseDocument;
 
 /**
@@ -51,4 +54,8 @@ public interface TripleSink extends AutoCloseable {
     public void addRecords(Map<String, GetRecordByIdResponseDocument> records,
             Report report);
 
+    
+    public void addAdditionalLinks(Map<String, Resource> datasetKeywordMap);
+    
+    public Model getModel();
 }

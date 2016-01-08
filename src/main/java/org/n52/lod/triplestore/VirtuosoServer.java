@@ -1,5 +1,5 @@
 /**
- * ﻿Copyright (C) 2013-2014 52°North Initiative for Geospatial Open Source
+ * ﻿Copyright (C) 2013-2016 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -43,6 +43,7 @@ import virtuoso.jena.driver.VirtGraph;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Resource;
 
 public class VirtuosoServer extends AbstractWorkerTripleSink {
 
@@ -95,6 +96,12 @@ public class VirtuosoServer extends AbstractWorkerTripleSink {
 
     public Model getModel() {
         return this.model;
+    }
+
+    @Override
+    public void addAdditionalLinks(Map<String, Resource> datasetKeywordMap)
+    {
+        addAdditionalLinksToModel(getModel(), datasetKeywordMap);
     }
 
 }

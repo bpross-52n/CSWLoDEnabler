@@ -22,7 +22,7 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<currentYear>2014</currentYear> <!-- manual setting -->
+		<currentYear>2016</currentYear> <!-- manual setting -->
 	</properties>
 
 	<build>

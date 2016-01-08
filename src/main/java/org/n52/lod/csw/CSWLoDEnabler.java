@@ -1,5 +1,5 @@
 /**
- * ﻿Copyright (C) 2013-2014 52°North Initiative for Geospatial Open Source
+ * ﻿Copyright (C) 2013-2016 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -129,7 +129,7 @@ public class CSWLoDEnabler {
     public static void main(String[] args) {
         try {
             CSWLoDEnabler enabler = new CSWLoDEnabler(new Configuration(Configuration.DEFAULT_CONFIG_FILE));
-            enabler.runStartingFrom(4900);
+            enabler.runStartingFrom(1);
         } catch (RuntimeException | IOException e) {
             log.error("Error running CSW to LOD", e);
         }

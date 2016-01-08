@@ -1,5 +1,5 @@
 /**
- * ﻿Copyright (C) 2013-2014 52°North Initiative for Geospatial Open Source
+ * ﻿Copyright (C) 2013-2016 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -39,6 +39,7 @@ import net.opengis.cat.csw.x202.GetRecordByIdResponseDocument;
 import org.apache.commons.lang.mutable.MutableInt;
 import org.apache.xmlbeans.XmlObject;
 import org.n52.lod.Report;
+import org.n52.lod.csw.mapping.CSWtoRDFMapper;
 import org.n52.lod.csw.mapping.XmlToRdfMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +50,8 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.DC_11;
 
 public abstract class AbstractWorkerTripleSink extends AbstractTripleSink {
 
@@ -129,5 +132,19 @@ public abstract class AbstractWorkerTripleSink extends AbstractTripleSink {
         
         log.debug("Added {} of {} records to model {}, which now has size {} (before {})", counter, records.size(), m.getClass(), m.size(), modelSizeBefore);
         return counter.intValue();
+    }
+    
+    protected void addAdditionalLinksToModel(final Model m, Map<String, Resource> datasetKeywordMap){
+        
+        for (String datasetId : datasetKeywordMap.keySet()) {
+            
+            Resource datasetResource = m.getResource(((CSWtoRDFMapper)this.mapper).getUriBase_record() +  datasetId);
+            
+            Resource keyWordResource = datasetKeywordMap.get(datasetId);
+            
+            datasetResource.addProperty(DC_11.subject, keyWordResource);
+            
+            log.trace("Adding {} as new subject for {}", keyWordResource.getURI(), datasetId);
+        }
     }
 }

@@ -1,5 +1,5 @@
 /**
- * ﻿Copyright (C) 2013-2014 52°North Initiative for Geospatial Open Source
+ * ﻿Copyright (C) 2013-2016 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -112,6 +112,8 @@ public class CSWtoRDFMapper implements XmlToRdfMapper {
     private String uriBase_project;
 
     private String uriBase_record;
+    
+    private String uriBase_keyword;
 
     private String uriBase_types;
 
@@ -144,6 +146,7 @@ public class CSWtoRDFMapper implements XmlToRdfMapper {
         uriBase_organisation = uriBase_ + "organization/";
         uriBase_project = uriBase_ + "project/";
         uriBase_record = uriBase_ + "record/";
+        uriBase_keyword = uriBase_ + "keyword/";
         uriBase_types = uriBase_ + "types/";
         uriBase_process = uriBase_ + "process/";
         uriBase_geometry = uriBase_ + "geometry/";
@@ -932,8 +935,11 @@ public class CSWtoRDFMapper implements XmlToRdfMapper {
         return new CSWtoRDFMapper(this.config);
     }
 
-    public String getUriBase_record()
-    {
+    public String getUriBase_record() {
         return uriBase_record;
+    }
+
+    public String getUriBase_keyword() {
+        return uriBase_keyword;
     }
 }
