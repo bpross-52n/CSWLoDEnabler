@@ -59,7 +59,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>org.n52.lod.csw.CSWLoDEnabler</mainClass>
+							<mainClass>org.n52.lod.csw.AdditionalLinkCreator</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

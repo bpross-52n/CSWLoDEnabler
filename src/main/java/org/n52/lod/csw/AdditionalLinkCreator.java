@@ -129,7 +129,7 @@ public class AdditionalLinkCreator {
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception{
         
         if(args.length < 1){
             log.error("No csv file with additional links was specified.");
@@ -137,6 +137,20 @@ public class AdditionalLinkCreator {
         
         File csvFile = new File(args[0]);
 
+        FileReader in = new FileReader(csvFile);
+
+        BufferedReader bufferedReader = new BufferedReader(in);
+
+        String line = "";
+
+        while ((line = bufferedReader.readLine()) != null) {
+
+            String[] splitStrings = line.split(";");    
+            
+            String linkURL = splitStrings[0].trim();
+            String name = splitStrings[1].replace(" ", "");
+        }
+        
         String configFilePath = Configuration.DEFAULT_CONFIG_FILE;
         
         try{
